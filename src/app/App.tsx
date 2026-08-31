@@ -991,7 +991,13 @@ function FAQSection() {
 // ─── Kontak ──────────────────────────────────────────────────────────────────
 
 function KontakSection() {
-  return (
+    const [nama, setNama] = useState("");
+    const [telepon, setTelepon] = useState("");
+    const [email, setEmail] = useState("");
+    const [jenis, setJenis] = useState("");
+    const [uraian, setUraian] = useState("");
+    const [pesan, setPesan] = useState("");
+      return (
     <section id="kontak" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Reporting CTA banner */}
@@ -1016,18 +1022,22 @@ function KontakSection() {
                 Jadi Korban Kejahatan Siber?
               </h2>
               <p className="text-white/65 font-['Barlow'] text-sm max-w-xl">
-                Segera laporkan! Semakin cepat dilaporkan, semakin besar peluang penanganannya. Tim kami siap
-                menerima laporan 24 jam.
+                Segera laporkan! Semakin cepat dilaporkan, semakin besar peluang penanganannya. Akses layanan resmi untuk mendapatkan bantuan dan penanganan lebih lanjut.
               </p>
             </div>
             <div className="flex flex-col gap-3 flex-shrink-0">
-              <button className="flex items-center gap-2 bg-[#C9A53E] hover:bg-[#E8C96A] text-[#0D1B2E] font-['Barlow'] font-bold px-6 py-3.5 rounded-xl transition-all text-sm whitespace-nowrap">
+              <button
+                onClick={() => window.open("https://patrolisiber.id/", "_blank")}
+                className="flex items-center gap-2 bg-[#C9A53E] hover:bg-[#E8C96A] text-[#0D1B2E] font-['Barlow'] font-bold px-6 py-3.5 rounded-xl transition-all text-sm whitespace-nowrap"
+              >
                 <AlertTriangle className="w-4 h-4" />
                 Lapor Sekarang
               </button>
-              <button className="flex items-center gap-2 bg-white/10 border border-white/20 hover:bg-white/18 text-white font-['Barlow'] font-medium px-6 py-3 rounded-xl transition-all text-sm justify-center">
+              <button
+                onClick={() => window.open("https://www.ojk.go.id/", "_blank")} 
+                className="flex items-center gap-2 bg-white/10 border border-white/20 hover:bg-white/18 text-white font-['Barlow'] font-medium px-6 py-3 rounded-xl transition-all text-sm justify-center">
                 <Phone className="w-4 h-4" />
-                Hubungi Hotline
+                Kunjungi OJK
               </button>
             </div>
           </div>
@@ -1066,8 +1076,11 @@ function KontakSection() {
           </div>
 
           {/* Contact form */}
-          <div className="bg-[#EEF2F7] rounded-2xl p-6 md:p-8">
-            <h3 className="font-['Barlow_Condensed'] font-bold text-[#0D1B2E] text-xl tracking-wide mb-6">Kirim Pesan</h3>
+          <div
+            id="laporan"
+            className="bg-[#EEF2F7] rounded-2xl p-6 md:p-8"
+          >
+            <h3 className="font-['Barlow_Condensed'] font-bold text-[#0D1B2E] text-xl tracking-wide mb-6">Laporan Kejadian Siber</h3>
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -1083,6 +1096,8 @@ function KontakSection() {
                   <input
                     type="tel"
                     placeholder="+62 8XX-XXXX-XXXX"
+                    value={telepon}
+                    onChange={(e) => setTelepon(e.target.value)}
                     className="w-full bg-white border border-[rgba(13,27,46,0.12)] rounded-lg px-4 py-2.5 text-sm font-['Barlow'] text-[#0D1B2E] placeholder:text-[#9AAEC2] focus:outline-none focus:ring-2 focus:ring-[#C9A53E]/40 focus:border-[#C9A53E] transition-all"
                   />
                 </div>
@@ -1092,12 +1107,18 @@ function KontakSection() {
                 <input
                   type="email"
                   placeholder="email@anda.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-white border border-[rgba(13,27,46,0.12)] rounded-lg px-4 py-2.5 text-sm font-['Barlow'] text-[#0D1B2E] placeholder:text-[#9AAEC2] focus:outline-none focus:ring-2 focus:ring-[#C9A53E]/40 focus:border-[#C9A53E] transition-all"
                 />
               </div>
               <div>
                 <label className="text-xs font-['Barlow'] font-medium text-[#3D5269] mb-1.5 block">Jenis Pengaduan</label>
-                <select className="w-full bg-white border border-[rgba(13,27,46,0.12)] rounded-lg px-4 py-2.5 text-sm font-['Barlow'] text-[#0D1B2E] focus:outline-none focus:ring-2 focus:ring-[#C9A53E]/40 focus:border-[#C9A53E] transition-all">
+                <select
+                  value={jenis}
+                  onChange={(e) => setJenis(e.target.value)}
+                  className="w-full bg-white border border-[rgba(13,27,46,0.12)] rounded-lg px-4 py-2.5 text-sm font-['Barlow'] text-[#0D1B2E] focus:outline-none focus:ring-2 focus:ring-[#C9A53E]/40 focus:border-[#C9A53E] transition-all"
+                >
                   <option value="">-- Pilih Jenis --</option>
                   <option>Penipuan Daring</option>
                   <option>Peretasan Akun</option>
@@ -1112,10 +1133,16 @@ function KontakSection() {
                 <textarea
                   rows={4}
                   placeholder="Jelaskan kronologi kejadian secara singkat..."
+                  value={uraian}
+                  onChange={(e) => setUraian(e.target.value)}
                   className="w-full bg-white border border-[rgba(13,27,46,0.12)] rounded-lg px-4 py-2.5 text-sm font-['Barlow'] text-[#0D1B2E] placeholder:text-[#9AAEC2] focus:outline-none focus:ring-2 focus:ring-[#C9A53E]/40 focus:border-[#C9A53E] transition-all resize-none"
                 />
               </div>
-              <button className="w-full bg-[#0D1B2E] hover:bg-[#1A3A5C] text-white font-['Barlow'] font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2 text-sm">
+              <button
+                type="button"
+                onClick={() => alert("Laporan berhasil dikirim!")}
+                className="w-full bg-[#0D1B2E] hover:bg-[#1A3A5C] text-white font-['Barlow'] font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2 text-sm"
+              >
                 <Newspaper className="w-4 h-4" />
                 Kirim Laporan
               </button>
