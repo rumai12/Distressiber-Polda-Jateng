@@ -311,18 +311,41 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 }
 
 function OrgBox({
-  title, sub, top = false,
-}: { title: string; sub?: string; top?: boolean }) {
+  title,
+  sub,
+  top = false,
+  image,
+}: {
+  title: string;
+  sub?: string;
+  top?: boolean;
+  image?: string;
+}) {
   return (
     <div
-      className={`rounded-lg px-3 py-2.5 text-center min-w-[120px] max-w-[150px] shadow-sm border transition-all hover:-translate-y-0.5 ${
+      className={`rounded-lg px-3 py-2.5 text-center min-w-[120px] max-w-[150px] shadow-sm border ${
         top
           ? "bg-[#0D1B2E] border-[#C9A53E] text-white"
           : "bg-white border-[rgba(13,27,46,0.2)] text-[#0D1B2E]"
       }`}
     >
-      <div className={`font-['Barlow'] font-semibold text-xs leading-tight ${top ? "text-white" : "text-[#0D1B2E]"}`}>{title}</div>
-      {sub && <div className={`text-[10px] mt-1 font-['Barlow'] ${top ? "text-[#C9A53E]" : "text-[#5A6E87]"}`}>{sub}</div>}
+      {image && (
+        <img
+          src={image}
+          alt={title}
+          className="w-20 h-25 mx-auto mb-2 object-contain"
+        />
+      )}
+
+      <div className="font-['Barlow'] font-semibold text-xs leading-tight">
+        {title}
+      </div>
+
+      {sub && (
+        <div className="text-[10px] mt-1 font-['Barlow'] text-[#5A6E87]">
+          {sub}
+        </div>
+      )}
     </div>
   );
 }
@@ -366,8 +389,12 @@ function Navbar({ onNav }: { onNav: (id: string) => void }) {
       <nav className="flex items-center justify-between px-4 lg:px-8 h-16">
         {/* Logo */}
         <button onClick={() => nav("beranda")} className="flex items-center gap-3 flex-shrink-0">
-          <div className="w-10 h-10 rounded-lg bg-[#C9A53E]/20 border border-[#C9A53E]/40 flex items-center justify-center">
-            <Shield className="w-5 h-5 text-[#C9A53E]" />
+          <div className="w-15 h-15 rounded-lg bg-[#C9A53E]/20 border border-[#C9A53E]/40 flex items-center justify-center overflow-hidden">
+            <img
+              src="/logo-ditressiber.png"
+              alt="Logo Ditressiber"
+              className="w-full h-full object-contain"
+            />
           </div>
           <div className="text-left">
             <div className="font-['Barlow_Condensed'] font-bold text-white text-sm tracking-wide leading-none">
@@ -479,9 +506,10 @@ function Hero({ onNav }: { onNav: (id: string) => void }) {
             </h1>
 
             <p className="text-white/65 font-['Barlow'] text-base md:text-lg leading-relaxed max-w-xl mb-8">
-              Direktorat Reserse Siber Polda Jawa Tengah hadir untuk melindungi masyarakat dari
-              ancaman kejahatan siber, menegakkan hukum di ruang digital, dan membangun ekosistem siber yang
-              aman dan terpercaya.
+              Direktorat Reserse Siber Polda Jawa Tengah senantiasa hadir 
+              sebagai garda terdepan dalam melindungi masyarakat dari ancaman 
+              kejahatan siber, menegakkan hukum di ruang digital, serta membangun 
+              ekosistem siber yang aman, terpercaya, dan berintegritas.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -647,7 +675,10 @@ function OrgChartSection() {
         <div className="overflow-x-auto pb-4">
           <div className="min-w-[640px] flex flex-col items-center gap-0">
             {/* Level 1 */}
-            <OrgBox title="DITRESSIBER" sub="Direktur — [Nama Pejabat]" top />
+            <OrgBox
+              title="DITRESSIBER"
+              sub="Direktur —  WAHYU NUGROHO SETYAWAN, S.I.K. M.PICT.,M.Krim."
+            />
 
             {/* Connector */}
             <div className="w-px h-8 bg-[#C9A53E]/60" />
@@ -1062,63 +1093,6 @@ function KontakSection() {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Contact form */}
-          <div className="bg-[#EEF2F7] rounded-2xl p-6 md:p-8">
-            <h3 className="font-['Barlow_Condensed'] font-bold text-[#0D1B2E] text-xl tracking-wide mb-6">Kirim Pesan</h3>
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="text-xs font-['Barlow'] font-medium text-[#3D5269] mb-1.5 block">Nama Lengkap</label>
-                  <input
-                    type="text"
-                    placeholder="Nama Anda"
-                    className="w-full bg-white border border-[rgba(13,27,46,0.12)] rounded-lg px-4 py-2.5 text-sm font-['Barlow'] text-[#0D1B2E] placeholder:text-[#9AAEC2] focus:outline-none focus:ring-2 focus:ring-[#C9A53E]/40 focus:border-[#C9A53E] transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="text-xs font-['Barlow'] font-medium text-[#3D5269] mb-1.5 block">Nomor Telepon</label>
-                  <input
-                    type="tel"
-                    placeholder="+62 8XX-XXXX-XXXX"
-                    className="w-full bg-white border border-[rgba(13,27,46,0.12)] rounded-lg px-4 py-2.5 text-sm font-['Barlow'] text-[#0D1B2E] placeholder:text-[#9AAEC2] focus:outline-none focus:ring-2 focus:ring-[#C9A53E]/40 focus:border-[#C9A53E] transition-all"
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="text-xs font-['Barlow'] font-medium text-[#3D5269] mb-1.5 block">Email</label>
-                <input
-                  type="email"
-                  placeholder="email@anda.com"
-                  className="w-full bg-white border border-[rgba(13,27,46,0.12)] rounded-lg px-4 py-2.5 text-sm font-['Barlow'] text-[#0D1B2E] placeholder:text-[#9AAEC2] focus:outline-none focus:ring-2 focus:ring-[#C9A53E]/40 focus:border-[#C9A53E] transition-all"
-                />
-              </div>
-              <div>
-                <label className="text-xs font-['Barlow'] font-medium text-[#3D5269] mb-1.5 block">Jenis Pengaduan</label>
-                <select className="w-full bg-white border border-[rgba(13,27,46,0.12)] rounded-lg px-4 py-2.5 text-sm font-['Barlow'] text-[#0D1B2E] focus:outline-none focus:ring-2 focus:ring-[#C9A53E]/40 focus:border-[#C9A53E] transition-all">
-                  <option value="">-- Pilih Jenis --</option>
-                  <option>Penipuan Daring</option>
-                  <option>Peretasan Akun</option>
-                  <option>Penyebaran Hoaks</option>
-                  <option>Konten Ilegal</option>
-                  <option>Ancaman Siber</option>
-                  <option>Lainnya</option>
-                </select>
-              </div>
-              <div>
-                <label className="text-xs font-['Barlow'] font-medium text-[#3D5269] mb-1.5 block">Uraian Singkat</label>
-                <textarea
-                  rows={4}
-                  placeholder="Jelaskan kronologi kejadian secara singkat..."
-                  className="w-full bg-white border border-[rgba(13,27,46,0.12)] rounded-lg px-4 py-2.5 text-sm font-['Barlow'] text-[#0D1B2E] placeholder:text-[#9AAEC2] focus:outline-none focus:ring-2 focus:ring-[#C9A53E]/40 focus:border-[#C9A53E] transition-all resize-none"
-                />
-              </div>
-              <button className="w-full bg-[#0D1B2E] hover:bg-[#1A3A5C] text-white font-['Barlow'] font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2 text-sm">
-                <Newspaper className="w-4 h-4" />
-                Kirim Laporan
-              </button>
             </div>
           </div>
         </div>
