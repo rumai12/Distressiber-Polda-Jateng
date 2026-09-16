@@ -1077,10 +1077,8 @@ function KontakSection() {
                 {
                   icon: MapPin,
                   label: "Alamat Kantor",
-                  val: "Jl. [Nama Jalan No. XX], [Kelurahan], [Kecamatan], Semarang, Jawa Tengah [Kode Pos]",
+                  val: "Jl. Sultan Agung No.103, Gajahmungkur, Kec. Gajahmungkur, Kota Semarang, Jawa Tengah 50232",
                 },
-                { icon: Phone, label: "Telepon / Hotline", val: "(024) [XXX-XXXX] / [Nomor Hotline]" },
-                { icon: Mail, label: "Email Resmi", val: "[email.resmi]@polda-jateng.go.id" },
                 { icon: Globe, label: "Website Polda Jateng", val: "www.polda-jateng.go.id" },
               ].map(({ icon: Icon, label, val }, i) => (
                 <div key={i} className="flex items-start gap-4">
