@@ -1119,8 +1119,12 @@ function Footer({ onNav }: { onNav: (id: string) => void }) {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-[#C9A53E]/20 border border-[#C9A53E]/40 flex items-center justify-center">
-                <Shield className="w-5 h-5 text-[#C9A53E]" />
+              <div className="w-15 h-15 rounded-lg bg-[#C9A53E]/20 border border-[#C9A53E]/40 flex items-center justify-center overflow-hidden">
+                <img
+                  src="/logo-ditressiber.png"
+                  alt="Logo Ditressiber"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
                 <div className="font-['Barlow_Condensed'] font-bold text-white text-sm tracking-wide">DITRESSIBER</div>
