@@ -1131,7 +1131,7 @@ function Footer({ onNav }: { onNav: (id: string) => void }) {
               Direktorat Reserse Kriminal Siber Polda Jawa Tengah — Bersama Menjaga Ruang Siber.
             </p>
             <div className="text-white/30 text-xs font-['JetBrains_Mono']">
-              © {new Date().getFullYear()} Polda Jawa Tengah. Hak cipta dilindungi.
+              Informasi resmi dan edukasi keamanan ruang digital bagi masyarakat.
             </div>
           </div>
 
@@ -1157,8 +1157,6 @@ function Footer({ onNav }: { onNav: (id: string) => void }) {
             <h4 className="text-white font-['Barlow'] font-semibold text-sm mb-4 tracking-wide">Hubungi Kami</h4>
             <div className="space-y-3">
               {[
-                { icon: Phone, text: "(024) [XXX-XXXX]" },
-                { icon: Mail, text: "[email]@polda-jateng.go.id" },
                 { icon: MapPin, text: "Semarang, Jawa Tengah" },
                 { icon: Globe, text: "www.polda-jateng.go.id" },
               ].map(({ icon: Icon, text }, i) => (
